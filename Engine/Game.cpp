@@ -20,6 +20,7 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
+#include <string>
 
 Game::Game( MainWindow& wnd )
 	:
@@ -38,10 +39,56 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
+	std::string word = "KEVIN VIKIN\nNEVKI KEEVEE";
+	int rX = 30;
+	int rXc = 0;
+	int x = 100;
+	int y = 100;
+	int r = 255;
+	int g = 255;
+	int b = 255;
+	for (int i = 0; i < word.length(); i++)
+	{
+		switch (word.at(i))
+		{
+			case 'K':
+				chK(x + rXc * rX, y, r, g, b);
+				break;
+			case 'E':
+				chE(x + rXc * rX, y, r, g, b);
+				break;
+			case 'V':
+				chV(x + rXc * rX, y, r, g, b);
+				break;
+			case 'I':
+				chI(x + rXc * rX, y, r, g, b);
+				break;
+			case 'N':
+				chN(x + rXc * rX, y, r, g, b);
+				break;
+			case '\n':
+				y += 35;
+				rXc = -1;
+				break;
+		}
+		rXc++;
+	}
 }
 
 void Game::ComposeFrame()
 {
+	/*chK(328 + 0 * 30, 300, 255, 255, 255);
+	chE(328 + 1 * 30, 300, 255, 255, 255);
+	chV(328 + 2 * 30, 300, 255, 255, 255);
+	chI(328 + 3 * 30, 300, 255, 255, 255);
+	chN(328 + 4 * 30, 300, 255, 255, 255);
+
+	chL(328 + 0 * 30, 335, 255, 255, 255);
+	chA(328 + 1 * 30, 335, 255, 255, 255);
+	chC(328 + 2 * 30, 335, 255, 255, 255);
+	chK(328 + 3 * 30, 335, 255, 255, 255);
+	chO(328 + 4 * 30, 335, 255, 255, 255);*/
+	
 }
 
 void Game::Block(int x, int y, int r, int g, int b)
