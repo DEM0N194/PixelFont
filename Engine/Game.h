@@ -25,6 +25,7 @@
 #include "Graphics.h"
 #include "Text.h"
 #include "Colors.h"
+#include <random>
 
 class Game
 {
@@ -45,6 +46,9 @@ private:
 	/********************************/
 	/*        User Variables        */
 	/********************************/
+	std::random_device rd;
+	std::mt19937 rng;
+	std::uniform_int_distribution<int> cDist;
 	Text text;
 	Text origi;
 	float time = 0;

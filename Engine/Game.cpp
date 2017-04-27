@@ -23,12 +23,14 @@
 #include <string>
 #include <cmath>
 
-Game::Game( MainWindow& wnd )
+Game::Game(MainWindow& wnd)
 	:
-	wnd( wnd ),
-	gfx( wnd ),
+	wnd(wnd),
+	gfx(wnd),
 	text(gfx),
-	origi(gfx)
+	origi(gfx),
+	rng(rd()),
+	cDist(0, 255)
 {
 	text.SetText("Adam");
 	text.SetColor(255,154,124);
@@ -51,9 +53,12 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	time += 0.08;
-	x += (15*cos(time)) + 5*cos(time/2);
-	y += (10*sin(time)); + 5*sin(-time*5);
-	text.SetPostion(x,y);
+	x = 350 + (200*cos(time)) + 55*cos(time/2);
+	y = 350 + (100*sin(time)) + 55*sin(time*2);
+	text.SetPostion(x, y);
+	text.SetColor(0, cDist(rng), 0);
+	origi.SetColor(cDist(rng), cDist(rng), cDist(rng));
+	origi.SetPostion(0, 5*sin(time*5)-25);
 }
 
 void Game::ComposeFrame()
