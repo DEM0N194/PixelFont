@@ -23,6 +23,8 @@
 #include "Keyboard.h"
 #include "Mouse.h"
 #include "Graphics.h"
+#include "Text.h"
+#include "Colors.h"
 
 class Game
 {
@@ -43,9 +45,5 @@ private:
 	/********************************/
 	/*        User Variables        */
 	/********************************/
-	
-	/********************************/
-	/*         Pixel Font           */
-	/********************************/
-	
+	Text text;
 };
