@@ -21,13 +21,23 @@
 #include "MainWindow.h"
 #include "Game.h"
 #include <string>
+#include <cmath>
 
 Game::Game( MainWindow& wnd )
 	:
 	wnd( wnd ),
 	gfx( wnd ),
-	text(gfx)
+	text(gfx),
+	origi(gfx)
 {
+	text.SetText("Adam");
+	text.SetColor(255,154,124);
+	text.SetSpacing(2);
+	text.SetPostion(400, 300);
+
+	origi.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.?!\n0123456789");
+	origi.SetColor(255, 200, 100);
+	origi.SetBoxSize(100, 50, 700, 600);
 }
 
 void Game::Go()
@@ -40,18 +50,15 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	Text origi(gfx);
-	origi.SetText("KEVIN\n\nADAM");
-	origi.SetPostion(100, 100);
-	origi.SetColor(255, 200, 100);
-	origi.Draw();
+	time += 0.08;
+	x += (15*cos(time)) + 5*cos(time/2);
+	y += (10*sin(time)); + 5*sin(-time*5);
+	text.SetPostion(x,y);
 }
 
 void Game::ComposeFrame()
 {
-	text.SetText("KEvin  DanI\nLacko! Kiss?");
-	text.SetColor(Colors::Cyan);
-	text.SetSpacing(2);
+	origi.Draw();
 	text.Draw();
 }
 

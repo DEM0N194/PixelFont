@@ -46,4 +46,8 @@ private:
 	/*        User Variables        */
 	/********************************/
 	Text text;
+	Text origi;
+	float time = 0;
+	float x = 350;
+	float y = 250;
 };
