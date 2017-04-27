@@ -40,53 +40,18 @@ void Game::Go()
 
 void Game::UpdateModel()
 {
-	std::string word = "KEVIN\n\nADAM";
-	int rX = 30;
-	int rXc = 0;
-	int x = 100;
-	int y = 100;
-	int r = 155;
-	int g = 255;
-	int b = 255;
-	for (int i = 0; i < word.length(); i++)
-	{
-		switch (word.at(i))
-		{
-			case 'A':
-				gfx.chA(x + rXc * rX, y, r, g, b);
-				break;
-			case 'D':
-				gfx.chD(x + rXc * rX, y, r, g, b);
-				break;
-			case 'M':
-				gfx.chM(x + rXc * rX, y, r, g, b);
-				break;
-			case 'K':
-				gfx.chK(x + rXc * rX, y, r, g, b);
-				break;
-			case 'E':
-				gfx.chE(x + rXc * rX, y, r, g, b);
-				break;
-			case 'V':
-				gfx.chV(x + rXc * rX, y, r, g, b);
-				break;
-			case 'I':
-				gfx.chI(x + rXc * rX, y, r, g, b);
-				break;
-			case 'N':
-				gfx.chN(x + rXc * rX, y, r, g, b);
-				break;
-			case '\n':
-				y += 35;
-				rXc = -1;
-				break;
-		}
-		rXc++;
-	}
+	Text origi(gfx);
+	origi.SetText("KEVIN\n\nADAM");
+	origi.SetPostion(100, 100);
+	origi.SetColor(255, 200, 100);
+	origi.Draw();
 }
 
 void Game::ComposeFrame()
 {
-	text.DrawCh('B', 400, 300, Colors::Magenta);
+	text.SetText("KEvin  DanI\nLacko! Kiss?");
+	text.SetColor(Colors::Cyan);
+	text.SetSpacing(2);
+	text.Draw();
 }
 
