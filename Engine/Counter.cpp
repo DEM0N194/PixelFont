@@ -13,6 +13,7 @@ void Counter::Reset()
 	c = Colors::White;
 	num = 0;
 	spacing = 25 + 5;
+	numOf0 = 0;
 }
 
 void Counter::SetPostion(int x, int y)
@@ -35,6 +36,11 @@ void Counter::SetSpacing(int in_spacing)
 	spacing = 25 + in_spacing;
 }
 
+void Counter::SetNumOf0(int in_numOf0)
+{
+	numOf0 = in_numOf0;
+}
+
 void Counter::AlignLeft()
 {
 	alignment = Left;
@@ -54,6 +60,10 @@ void Counter::Draw(Graphics & gfx)
 {
 	Position posOld = pos;
 	std::string snum = std::to_string(num);
+	for (int i = 0 + int(snum.size()); i <= numOf0; i++)
+	{
+		snum.insert(0, "0");
+	}
 	int digit = 0;
 	for (auto& ch : snum)
 	{

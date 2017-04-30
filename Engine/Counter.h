@@ -24,6 +24,7 @@ public:
 	void SetColor(Color in_c);
 	void SetColor(int r, int g, int b);
 	void SetSpacing(int in_spacing);
+	void SetNumOf0(int in_numOf0);
 	void AlignLeft();
 	void AlignMiddle();
 	void AlignRight();
@@ -77,4 +78,5 @@ private:
 	Color c;
 	int num;
 	int spacing;
+	int numOf0;
 };
