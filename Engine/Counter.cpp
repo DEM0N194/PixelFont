@@ -63,10 +63,10 @@ void Counter::Draw(Graphics & gfx)
 				pos.x = posOld.x + digit*spacing;
 				break;
 			case Middle:
-				pos.x = posOld.x - snum.size()/2.0f*spacing + digit*spacing;
+				pos.x = posOld.x - int(snum.size()/2.0f)*spacing + digit*spacing;
 				break;
 			case Right:
-				pos.x = posOld.x - snum.size()*spacing + digit*spacing;
+				pos.x = posOld.x - int(snum.size())*spacing + digit*spacing;
 				break;
 		}
 		digit++;
