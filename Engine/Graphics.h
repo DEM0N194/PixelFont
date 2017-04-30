@@ -95,7 +95,8 @@ public:
 	void ch7(int x, int y, Color c);
 	void ch8(int x, int y, Color c);
 	void ch9(int x, int y, Color c);
-	void chPoint(int x, int y, Color c);
+	void chDot(int x, int y, Color c);
+	void chComma(int x, int y, Color c);
 	void chApostrophe(int x, int y, Color c);
 	void chExMark(int x, int y, Color c);
 	void chQMark(int x, int y, Color c);
@@ -138,7 +139,8 @@ public:
 	void ch7(int x, int y, int r, int g, int b);
 	void ch8(int x, int y, int r, int g, int b);
 	void ch9(int x, int y, int r, int g, int b);
-	void chPoint(int x, int y, int r, int g, int b);
+	void chDot(int x, int y, int r, int g, int b);
+	void chComma(int x, int y, int r, int g, int b);
 	void chApostrophe(int x, int y, int r, int g, int b);
 	void chExMark(int x, int y, int r, int g, int b);
 	void chQMark(int x, int y, int r, int g, int b);

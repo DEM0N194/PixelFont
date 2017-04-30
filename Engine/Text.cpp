@@ -206,7 +206,10 @@ void Text::DrawCh(char ch)
 			gfx.ch9(Pos.x, Pos.y, c);
 			break;
 		case '.':
-			gfx.chPoint(Pos.x, Pos.y, c);
+			gfx.chDot(Pos.x, Pos.y, c);
+			break;
+		case ',':
+			gfx.chComma(Pos.x, Pos.y, c);
 			break;
 		case '\'':
 			gfx.chApostrophe(Pos.x, Pos.y, c);

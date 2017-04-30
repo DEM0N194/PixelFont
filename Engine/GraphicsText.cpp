@@ -602,18 +602,15 @@ void Graphics::ch1(int x, int y, Color c)
 	Block(x + 5, y + 5, c);
 	Block(x + 10, y + 5, c);
 
-	Block(x, y + 10, c);
 	Block(x + 10, y + 10, c);
 
 	Block(x + 10, y + 15, c);
 
 	Block(x + 10, y + 20, c);
 
-	Block(x, y + 25, c);
 	Block(x + 5, y + 25, c);
 	Block(x + 10, y + 25, c);
 	Block(x + 15, y + 25, c);
-	Block(x + 20, y + 25, c);
 }
 void Graphics::ch2(int x, int y, Color c)
 {
@@ -632,7 +629,7 @@ void Graphics::ch2(int x, int y, Color c)
 
 	Block(x, y + 20, c);
 
-	Block(x, y + 25, c);
+	Block(x , y + 25, c);
 	Block(x + 5, y + 25, c);
 	Block(x + 10, y + 25, c);
 	Block(x + 15, y + 25, c);
@@ -640,27 +637,25 @@ void Graphics::ch2(int x, int y, Color c)
 }
 void Graphics::ch3(int x, int y, Color c)
 {
-	Block(x, y, c);
+	Block(x, y + 5, c);
+
 	Block(x + 5, y, c);
 	Block(x + 10, y, c);
 	Block(x + 15, y, c);
 
 	Block(x + 20, y + 5, c);
 
-	Block(x + 20, y + 10, c);
-
-	Block(x, y + 15, c);
-	Block(x + 5, y + 15, c);
-	Block(x + 10, y + 15, c);
-	Block(x + 15, y + 15, c);
+	Block(x + 10, y + 10, c);
+	Block(x + 15, y + 10, c);
 
 	Block(x + 20, y + 20, c);
+	Block(x + 20, y + 15, c);
 
-	Block(x, y + 25, c);
+	Block(x, y + 20, c);
+
 	Block(x + 5, y + 25, c);
 	Block(x + 10, y + 25, c);
 	Block(x + 15, y + 25, c);
-	Block(x + 20, y + 25, c);
 }
 void Graphics::ch4(int x, int y, Color c)
 {
@@ -712,9 +707,9 @@ void Graphics::ch6(int x, int y, Color c)
 {
 	Block(x + 10, y, c);
 	Block(x + 15, y, c);
-	Block(x + 20, y, c);
 
 	Block(x + 5, y + 5, c);
+
 
 	Block(x, y + 10, c);
 
@@ -746,7 +741,7 @@ void Graphics::ch7(int x, int y, Color c)
 
 	Block(x + 5, y + 20, c);
 
-	Block(x, y + 25, c);
+	Block(x + 5, y + 25, c);
 }
 void Graphics::ch8(int x, int y, Color c)
 {
@@ -778,23 +773,36 @@ void Graphics::ch9(int x, int y, Color c)
 	Block(x + 15, y, c);
 
 	Block(x, y + 5, c);
+	Block(x, y + 10 , c);
 	Block(x + 20, y + 5, c);
 
-	Block(x + 5, y + 10, c);
-	Block(x + 10, y + 10, c);
-	Block(x + 15, y + 10, c);
+	Block(x + 5, y + 15, c);
+	Block(x + 10, y + 15, c);
+	Block(x + 15, y + 15, c);
 	Block(x + 20, y + 10, c);
 
 	Block(x + 20, y + 15, c);
 
-	Block(x + 15, y + 20, c);
+	Block(x + 20, y + 20, c);
 
+	Block(x + 15, y + 25, c);
 	Block(x + 10, y + 25, c);
+	Block(x + 5, y + 25, c);
 }
 
-void Graphics::chPoint(int x, int y, Color c)
+void Graphics::chDot(int x, int y, Color c)
 {
+	Block(x, y + 20, c);
+	Block(x + 5, y + 20, c);
 	Block(x, y + 25, c);
+	Block(x + 5, y + 25, c);
+}
+void Graphics::chComma(int x, int y, Color c)
+{
+	Block(x , y + 20, c);
+	Block(x + 5, y + 20, c);
+	Block(x + 5, y + 25, c);
+	Block(x, y + 30, c);
 }
 void Graphics::chApostrophe(int x, int y, Color c)
 {
@@ -1016,9 +1024,14 @@ void Graphics::ch9(int x, int y, int r, int g, int b)
 	ch9(x, y, {unsigned char(r),unsigned char(g),unsigned char(b)});
 }
 
-void Graphics::chPoint(int x, int y, int r, int g, int b)
+void Graphics::chDot(int x, int y, int r, int g, int b)
 {
-	chPoint(x, y, {unsigned char(r),unsigned char(g),unsigned char(b)});
+	chDot(x, y, {unsigned char(r),unsigned char(g),unsigned char(b)});
+}
+
+void Graphics::chComma(int x, int y, int r, int g, int b)
+{
+	chComma(x, y, {unsigned char(r),unsigned char(g),unsigned char(b)});
 }
 
 void Graphics::chApostrophe(int x, int y, int r, int g, int b)

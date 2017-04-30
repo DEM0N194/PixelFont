@@ -37,7 +37,7 @@ Game::Game(MainWindow& wnd)
 	text.SetSpacing(2);
 	text.SetPostion(400, 300);
 
-	origi.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.?!\n0123456789");
+	origi.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.,?!\n0123456789");
 	origi.SetColor(255, 200, 100);
 	origi.SetBoxSize(100, 50, 700, 600);
 }
@@ -55,10 +55,10 @@ void Game::UpdateModel()
 	time += 0.08;
 	x = 350 + (200*cos(time)) + 55*cos(time/2);
 	y = 350 + (100*sin(time)) + 55*sin(time*2);
-	text.SetPostion(x, y);
+	text.SetPostion(int(x), int(y));
 	text.SetColor(0, cDist(rng), 0);
-	origi.SetColor(cDist(rng), cDist(rng), cDist(rng));
-	origi.SetPostion(0, 5*sin(time*5)-25);
+	//origi.SetColor(cDist(rng), cDist(rng), cDist(rng));
+	//origi.SetPostion(0, int(5*sin(time*5)-25));
 }
 
 void Game::ComposeFrame()
