@@ -12,7 +12,7 @@ private:
 		int y;
 	};
 public:
-	Text(Graphics & in_gfx);
+	Text(Graphics& in_gfx);
 	void Reset();
 	void SetPostion(int in_x, int in_y);
 	void SetColor(Color in_c);
@@ -27,9 +27,9 @@ private:
 private:
 	Graphics& gfx;
 	Color c;
-	Position Pos;
-	Position Box1;
-	Position Box2;
+	Position pos;
+	Position box1;
+	Position box2;
 	std::string text;
 	int spacing;
 	int lineSpacing;

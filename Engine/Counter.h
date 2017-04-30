@@ -13,21 +13,23 @@ private:
 private:
 	enum Alignment
 	{
-		Middle,
 		Left,
+		Middle,
 		Right
 	};
 public:
-	Counter(Graphics & in_gfx);
+	Counter();
 	void Reset();
-	void SetPostion(int in_x, int in_y);
+	void SetPostion(int x, int y);
 	void SetColor(Color in_c);
 	void SetColor(int r, int g, int b);
 	void SetSpacing(int in_spacing);
 	void AlignLeft();
-	void AlignRigth();
 	void AlignMiddle();
-	void Draw();
+	void AlignRight();
+	void Draw(Graphics& gfx);
+private:
+	void DrawCh(char ch, Graphics& gfx);
 public:
 	Counter operator+(int rhs);
 	Counter operator+(const Counter& rhs);
@@ -70,9 +72,9 @@ public:
 	bool operator!=(int rhs);
 	bool operator!=(const Counter& rhs);
 private:
-	Graphics& gfx;
-	Position Pos;
-	Alignment Align;
-	int Num;
-	int Spacing;
+	Position pos;
+	Alignment alignment;
+	Color c;
+	int num;
+	int spacing;
 };

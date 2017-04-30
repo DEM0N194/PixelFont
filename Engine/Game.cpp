@@ -27,19 +27,21 @@ Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
+	name(gfx),
 	text(gfx),
-	origi(gfx),
 	rng(rd()),
 	cDist(0, 255)
 {
-	text.SetText("Adam");
-	text.SetColor(255,154,124);
-	text.SetSpacing(2);
-	text.SetPostion(400, 300);
+	name.SetText("Adam");
+	name.SetColor(255,154,124);
+	name.SetSpacing(2);
+	name.SetPostion(400, 300);
 
-	origi.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.,?!\n0123456789");
-	origi.SetColor(255, 200, 100);
-	origi.SetBoxSize(100, 50, 700, 600);
+	text.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.,?!\n0123456789");
+	text.SetColor(255, 200, 100);
+	text.SetBoxSize(100, 50, 700, 600);
+
+	numL.SetPostion(150, 500);
 }
 
 void Game::Go()
@@ -53,17 +55,21 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	time += 0.08;
+
 	x = 350 + (200*cos(time)) + 55*cos(time/2);
 	y = 350 + (100*sin(time)) + 55*sin(time*2);
-	text.SetPostion(int(x), int(y));
-	text.SetColor(0, cDist(rng), 0);
-	//origi.SetColor(cDist(rng), cDist(rng), cDist(rng));
-	//origi.SetPostion(0, int(5*sin(time*5)-25));
+
+	name.SetPostion(int(x), int(y));
+	name.SetColor(0, cDist(rng), 0);
+
+	text.SetColor(cDist(rng), cDist(rng), cDist(rng));
+	text.SetPostion(0, int(5*sin(time*5)-25));
 }
 
 void Game::ComposeFrame()
 {
-	origi.Draw();
 	text.Draw();
+	name.Draw();
+	numL.Draw(gfx);
 }
 

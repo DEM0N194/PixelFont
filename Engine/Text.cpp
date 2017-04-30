@@ -9,12 +9,9 @@ Text::Text(Graphics & in_gfx)
 void Text::Reset()
 {
 	c = Colors::White;
-	Pos.x = 0;
-	Pos.y = 0;
-	Box1.x = 0;
-	Box1.y = 0;
-	Box2.x = gfx.ScreenWidth - 1;
-	Box2.y = gfx.ScreenHeight - 1;
+	pos = {0,0};
+	box1 = {0,0};
+	box2 = {gfx.ScreenWidth-1, gfx.ScreenHeight-1};
 	text = "";
 	spacing = 25 + 5;
 	lineSpacing = 30 + 5;
@@ -22,8 +19,8 @@ void Text::Reset()
 
 void Text::SetPostion(int in_x, int in_y)
 {
-	Pos.x = in_x;
-	Pos.y = in_y;
+	pos.x = in_x;
+	pos.y = in_y;
 }
 
 void Text::SetColor(Color in_c)
@@ -38,14 +35,14 @@ void Text::SetColor(int r, int g, int b)
 
 void Text::SetBoxSize(int x1, int y1, int x2, int y2)
 {
-	Box1.x = x1;
-	Box1.y = y1;
-	Box2.x = x2;
-	Box2.y = y2;
-	if (x1 < 0) Box1.x = 0;
-	if (y1 < 0) Box1.y = 0;
-	if (x2 >= gfx.ScreenWidth) Box2.x = gfx.ScreenWidth - 1;
-	if (y2 >= gfx.ScreenHeight) Box2.y = gfx.ScreenHeight - 1;
+	box1.x = x1;
+	box1.y = y1;
+	box2.x = x2;
+	box2.y = y2;
+	if (x1 < 0) box1.x = 0;
+	if (y1 < 0) box1.y = 0;
+	if (x2 >= gfx.ScreenWidth) box2.x = gfx.ScreenWidth - 1;
+	if (y2 >= gfx.ScreenHeight) box2.y = gfx.ScreenHeight - 1;
 }
 
 void Text::SetSpacing(int in_spacing)
@@ -66,31 +63,31 @@ void Text::SetText(std::string in_text)
 
 void Text::Draw()
 {
-	Position PosOld = Pos;
+	Position PosOld = pos;
 	int Column = 0;
 	int Row = 0;
-	for (auto& c : text)
+	for (auto& ch : text)
 	{
-		if (!(Pos.x < Box2.x - 2* spacing))
+		if (!(pos.x < box2.x - 2* spacing))
 		{
 			Column = 0;
 			Row++;
 		}
-		Pos.x = Box1.x + PosOld.x + Column * spacing;
-		Pos.y = Box1.y + PosOld.y + Row * lineSpacing;
-		if (c == '\n')
+		pos.x = box1.x + PosOld.x + Column * spacing;
+		pos.y = box1.y + PosOld.y + Row * lineSpacing;
+		if (ch == '\n')
 		{
 			Column = -1;
 			Row++;
 		}
 		else
 		{
-			if(Pos.y < Box2.y - lineSpacing)
-			DrawCh(c);
+			if(pos.y < box2.y - lineSpacing)
+			DrawCh(ch);
 		}
 		Column++;
 	}
-	Pos = PosOld;
+	pos = PosOld;
 }
 
 void Text::DrawCh(char ch)
@@ -98,130 +95,130 @@ void Text::DrawCh(char ch)
 	switch (ch)
 	{
 		case 'A':
-			gfx.chA(Pos.x, Pos.y, c);
+			gfx.chA(pos.x, pos.y, c);
 			break;
 		case 'B':
-			gfx.chB(Pos.x, Pos.y, c);
+			gfx.chB(pos.x, pos.y, c);
 			break;
 		case 'C':
-			gfx.chC(Pos.x, Pos.y, c);
+			gfx.chC(pos.x, pos.y, c);
 			break;
 		case 'D':
-			gfx.chD(Pos.x, Pos.y, c);
+			gfx.chD(pos.x, pos.y, c);
 			break;
 		case 'E':
-			gfx.chE(Pos.x, Pos.y, c);
+			gfx.chE(pos.x, pos.y, c);
 			break;
 		case 'F':
-			gfx.chF(Pos.x, Pos.y, c);
+			gfx.chF(pos.x, pos.y, c);
 			break;
 		case 'G':
-			gfx.chG(Pos.x, Pos.y, c);
+			gfx.chG(pos.x, pos.y, c);
 			break;
 		case 'H':
-			gfx.chH(Pos.x, Pos.y, c);
+			gfx.chH(pos.x, pos.y, c);
 			break;
 		case 'I':
-			gfx.chI(Pos.x, Pos.y, c);
+			gfx.chI(pos.x, pos.y, c);
 			break;
 		case 'J':
-			gfx.chJ(Pos.x, Pos.y, c);
+			gfx.chJ(pos.x, pos.y, c);
 			break;
 		case 'K':
-			gfx.chK(Pos.x, Pos.y, c);
+			gfx.chK(pos.x, pos.y, c);
 			break;
 		case 'L':
-			gfx.chL(Pos.x, Pos.y, c);
+			gfx.chL(pos.x, pos.y, c);
 			break;
 		case 'M':
-			gfx.chM(Pos.x, Pos.y, c);
+			gfx.chM(pos.x, pos.y, c);
 			break;
 		case 'N':
-			gfx.chN(Pos.x, Pos.y, c);
+			gfx.chN(pos.x, pos.y, c);
 			break;
 		case 'O':
-			gfx.chO(Pos.x, Pos.y, c);
+			gfx.chO(pos.x, pos.y, c);
 			break;
 		case 'P':
-			gfx.chP(Pos.x, Pos.y, c);
+			gfx.chP(pos.x, pos.y, c);
 			break;
 		case 'Q':
-			gfx.chQ(Pos.x, Pos.y, c);
+			gfx.chQ(pos.x, pos.y, c);
 			break;
 		case 'R':
-			gfx.chR(Pos.x, Pos.y, c);
+			gfx.chR(pos.x, pos.y, c);
 			break;
 		case 'S':
-			gfx.chS(Pos.x, Pos.y, c);
+			gfx.chS(pos.x, pos.y, c);
 			break;
 		case 'T':
-			gfx.chT(Pos.x, Pos.y, c);
+			gfx.chT(pos.x, pos.y, c);
 			break;
 		case 'U':
-			gfx.chU(Pos.x, Pos.y, c);
+			gfx.chU(pos.x, pos.y, c);
 			break;
 		case 'V':
-			gfx.chV(Pos.x, Pos.y, c);
+			gfx.chV(pos.x, pos.y, c);
 			break;
 		case 'W':
-			gfx.chW(Pos.x, Pos.y, c);
+			gfx.chW(pos.x, pos.y, c);
 			break;
 		case 'X':
-			gfx.chX(Pos.x, Pos.y, c);
+			gfx.chX(pos.x, pos.y, c);
 			break;
 		case 'Y':
-			gfx.chY(Pos.x, Pos.y, c);
+			gfx.chY(pos.x, pos.y, c);
 			break;
 		case 'Z':
-			gfx.chZ(Pos.x, Pos.y, c);
+			gfx.chZ(pos.x, pos.y, c);
 			break;
 		case '0':
-			gfx.ch0(Pos.x, Pos.y, c);
+			gfx.ch0(pos.x, pos.y, c);
 			break;
 		case '1':
-			gfx.ch1(Pos.x, Pos.y, c);
+			gfx.ch1(pos.x, pos.y, c);
 			break;
 		case '2':
-			gfx.ch2(Pos.x, Pos.y, c);
+			gfx.ch2(pos.x, pos.y, c);
 			break;
 		case '3':
-			gfx.ch3(Pos.x, Pos.y, c);
+			gfx.ch3(pos.x, pos.y, c);
 			break;
 		case '4':
-			gfx.ch4(Pos.x, Pos.y, c);
+			gfx.ch4(pos.x, pos.y, c);
 			break;
 		case '5':
-			gfx.ch5(Pos.x, Pos.y, c);
+			gfx.ch5(pos.x, pos.y, c);
 			break;
 		case '6':
-			gfx.ch6(Pos.x, Pos.y, c);
+			gfx.ch6(pos.x, pos.y, c);
 			break;
 		case '7':
-			gfx.ch7(Pos.x, Pos.y, c);
+			gfx.ch7(pos.x, pos.y, c);
 			break;
 		case '8':
-			gfx.ch8(Pos.x, Pos.y, c);
+			gfx.ch8(pos.x, pos.y, c);
 			break;
 		case '9':
-			gfx.ch9(Pos.x, Pos.y, c);
+			gfx.ch9(pos.x, pos.y, c);
 			break;
 		case '.':
-			gfx.chDot(Pos.x, Pos.y, c);
+			gfx.chDot(pos.x, pos.y, c);
 			break;
 		case ',':
-			gfx.chComma(Pos.x, Pos.y, c);
+			gfx.chComma(pos.x, pos.y, c);
 			break;
 		case '\'':
-			gfx.chApostrophe(Pos.x, Pos.y, c);
+			gfx.chApostrophe(pos.x, pos.y, c);
 			break;
 		case '!':
-			gfx.chExMark(Pos.x, Pos.y, c);
+			gfx.chExMark(pos.x, pos.y, c);
 			break;
 		case '?':
-			gfx.chQMark(Pos.x, Pos.y, c);
+			gfx.chQMark(pos.x, pos.y, c);
 			break;
 		case '-':
-			gfx.chDash(Pos.x, Pos.y, c);
+			gfx.chDash(pos.x, pos.y, c);
 			break;
 	}
 }

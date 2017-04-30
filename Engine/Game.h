@@ -24,6 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include "Text.h"
+#include "Counter.h"
 #include "Colors.h"
 #include <random>
 
@@ -50,7 +51,8 @@ private:
 	std::mt19937 rng;
 	std::uniform_int_distribution<int> cDist;
 	Text text;
-	Text origi;
+	Text name;
+	Counter numL;
 	float time = 0;
 	float x = 350;
 	float y = 250;
