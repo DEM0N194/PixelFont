@@ -11,7 +11,7 @@ void Counter::Reset()
 	pos = {0,0};
 	alignment = Left;
 	c = Colors::White;
-	num = 123;
+	num = 0;
 	spacing = 25 + 5;
 }
 
@@ -70,7 +70,13 @@ void Counter::Draw(Graphics & gfx)
 				break;
 		}
 		digit++;
-		DrawCh(ch,gfx);
+		if (pos.x >= 0 &&
+			pos.x + 25 < gfx.ScreenWidth &&
+			pos.y >= 0 &&
+			pos.y + 30 < gfx.ScreenHeight)
+		{
+			DrawCh(ch,gfx);
+		}
 	}
 	pos = posOld;
 }
@@ -110,4 +116,208 @@ void Counter::DrawCh(char ch, Graphics & gfx)
 			gfx.ch9(pos.x, pos.y, c);
 			break;
 	}
+}
+
+int Counter::operator+(int rhs)
+{
+	return num + rhs;
+}
+
+int Counter::operator+(const Counter & rhs)
+{
+	return num + rhs.num;
+}
+
+int Counter::operator-(int rhs)
+{
+	return num - rhs;
+}
+
+int Counter::operator-(const Counter & rhs)
+{
+	return num - rhs.num;
+}
+
+int Counter::operator*(int rhs)
+{
+	return num * rhs;
+}
+
+int Counter::operator*(const Counter & rhs)
+{
+	return num * rhs.num;
+}
+
+int Counter::operator/(int rhs)
+{
+	return num / num;
+}
+
+int Counter::operator/(const Counter & rhs)
+{
+	return num / rhs.num;
+}
+
+int Counter::operator%(int rhs)
+{
+	return num % num;
+}
+
+int Counter::operator%(const Counter & rhs)
+{
+	return num % rhs.num;
+}
+
+Counter Counter::operator++(int)
+{					
+	return ++(*this);
+}
+
+Counter Counter::operator--(int)
+{
+	return --(*this);
+}
+
+Counter & Counter::operator++()
+{
+	++num;
+	return *this;
+}
+
+Counter & Counter::operator--()
+{
+	--num;
+	return *this;
+}
+
+Counter & Counter::operator=(int rhs)
+{
+	num = rhs;
+	return *this;
+}
+
+Counter & Counter::operator=(const Counter & rhs)
+{
+	num = rhs.num;
+	return *this;
+}
+
+Counter & Counter::operator+=(int rhs)
+{
+	num += rhs;
+	return *this;
+}
+
+Counter & Counter::operator+=(const Counter & rhs)
+{
+	num += rhs.num;
+	return *this;
+}
+
+Counter & Counter::operator-=(int rhs)
+{
+	num -= rhs;
+	return *this;
+}
+
+Counter & Counter::operator-=(const Counter & rhs)
+{
+	num -= rhs.num;
+	return *this;
+}
+
+Counter & Counter::operator*=(int rhs)
+{
+	num *= rhs;
+	return *this;
+}
+
+Counter & Counter::operator*=(const Counter & rhs)
+{
+	num *= rhs.num;
+	return *this;
+}
+
+Counter & Counter::operator/=(int rhs)
+{
+	num /= rhs;
+	return *this;
+}
+
+Counter & Counter::operator/=(const Counter & rhs)
+{
+	num /= rhs.num;
+	return *this;
+}
+
+Counter & Counter::operator%=(int rhs)
+{
+	num %= rhs;
+	return *this;
+}
+
+Counter & Counter::operator%=(const Counter & rhs)
+{
+	num %= rhs.num;
+	return *this;
+}
+
+bool Counter::operator<(int rhs)
+{
+	return num < rhs;
+}
+
+bool Counter::operator<(const Counter & rhs)
+{
+	return num < rhs.num;
+}
+
+bool Counter::operator>(int rhs)
+{
+	return num > rhs;
+}
+
+bool Counter::operator>(const Counter & rhs)
+{
+	return num > rhs.num;
+}
+
+bool Counter::operator<=(int rhs)
+{
+	return num <= rhs;
+}
+
+bool Counter::operator<=(const Counter & rhs)
+{
+	return num <= rhs.num;
+}
+
+bool Counter::operator>=(int rhs)
+{
+	return num >= rhs;
+}
+
+bool Counter::operator>=(const Counter & rhs)
+{
+	return num >= rhs.num;
+}
+
+bool Counter::operator==(int rhs)
+{
+	return num == rhs;
+}
+
+bool Counter::operator==(const Counter & rhs)
+{
+	return num == rhs.num;
+}
+
+bool Counter::operator!=(int rhs)
+{
+	return num != rhs;
+}
+
+bool Counter::operator!=(const Counter & rhs)
+{
+	return num != rhs.num;
 }

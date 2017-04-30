@@ -42,6 +42,7 @@ Game::Game(MainWindow& wnd)
 	text.SetBoxSize(100, 50, 700, 600);
 
 	numL.SetPostion(150, 500);
+	numL.AlignMiddle();
 }
 
 void Game::Go()
@@ -55,7 +56,7 @@ void Game::Go()
 void Game::UpdateModel()
 {
 	time += 0.08;
-
+	
 	x = 350 + (200*cos(time)) + 55*cos(time/2);
 	y = 350 + (100*sin(time)) + 55*sin(time*2);
 
@@ -64,6 +65,8 @@ void Game::UpdateModel()
 
 	text.SetColor(cDist(rng), cDist(rng), cDist(rng));
 	text.SetPostion(0, int(5*sin(time*5)-25));
+
+	numL++;
 }
 
 void Game::ComposeFrame()

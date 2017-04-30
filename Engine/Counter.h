@@ -31,16 +31,16 @@ public:
 private:
 	void DrawCh(char ch, Graphics& gfx);
 public:
-	Counter operator+(int rhs);
-	Counter operator+(const Counter& rhs);
-	Counter operator-(int rhs);
-	Counter operator-(const Counter& rhs);
-	Counter operator*(int rhs);
-	Counter operator*(const Counter& rhs);
-	Counter operator/(int rhs);
-	Counter operator/(const Counter& rhs);
-	Counter operator%(int rhs);
-	Counter operator%(const Counter& rhs);
+	int operator+(int rhs);
+	int operator+(const Counter& rhs);
+	int operator-(int rhs);
+	int operator-(const Counter& rhs);
+	int operator*(int rhs);
+	int operator*(const Counter& rhs);
+	int operator/(int rhs);
+	int operator/(const Counter& rhs);
+	int operator%(int rhs);
+	int operator%(const Counter& rhs);
 	Counter operator++(int); // T++
 	Counter operator--(int); // T--
 public:
