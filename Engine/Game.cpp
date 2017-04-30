@@ -39,9 +39,17 @@ Game::Game(MainWindow& wnd)
 	text.SetLineSpacing(10);
 	text.SetBoxSize(100, 50, 700, 600);
 
-	numL.SetPostion(150, 500);
-	numL.AlignMiddle();
-	numL.SetNumOf0(2);
+	numL.SetPostion(25, 550);
+	numL.SetColor(Colors::Gray);
+	numL.SetNumOf0(5);
+
+	numM.SetPostion(400, 550);
+	numM.AlignMiddle();
+	numM.SetNumOf0(2);
+
+	numR.SetPostion(775, 550);
+	numR.AlignRight();
+	numR.SetSpacing(2);
 }
 
 void Game::Go()
@@ -65,7 +73,16 @@ void Game::UpdateModel()
 	text.SetColor(cDist(rng), cDist(rng), cDist(rng));
 	text.SetPostion(0, int(5*sin(time*5)-25));
 
-	numL = int(time);
+	numL++;
+	if (numL > 999999) numL = 0;
+
+	numM = -int(time);
+
+	if (numL % 60 == 0)
+	{
+		numR++;
+		numR.SetColor(cDist(rng), cDist(rng), cDist(rng));
+	}
 }
 
 void Game::ComposeFrame()
@@ -73,5 +90,7 @@ void Game::ComposeFrame()
 	text.Draw();
 	name.Draw();
 	numL.Draw(gfx);
+	numM.Draw(gfx);
+	numR.Draw(gfx);
 }
 

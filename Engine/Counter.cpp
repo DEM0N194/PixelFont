@@ -59,11 +59,13 @@ void Counter::AlignRight()
 void Counter::Draw(Graphics & gfx)
 {
 	Position posOld = pos;
-	std::string snum = std::to_string(num);
+	std::string snum = std::to_string(abs(num));
 	for (int i = 0 + int(snum.size()); i <= numOf0; i++)
 	{
 		snum.insert(0, "0");
 	}
+	if (num < 0) snum.insert(0, "-");
+
 	int digit = 0;
 	for (auto& ch : snum)
 	{
@@ -125,6 +127,9 @@ void Counter::DrawCh(char ch, Graphics & gfx)
 		case '9':
 			gfx.ch9(pos.x, pos.y, c);
 			break;
+		case '-':
+			gfx.chDash(pos.x, pos.y, c);
+			break;
 	}
 }
 
@@ -160,7 +165,7 @@ int Counter::operator*(const Counter & rhs)
 
 int Counter::operator/(int rhs)
 {
-	return num / num;
+	return num / rhs;
 }
 
 int Counter::operator/(const Counter & rhs)
@@ -170,7 +175,7 @@ int Counter::operator/(const Counter & rhs)
 
 int Counter::operator%(int rhs)
 {
-	return num % num;
+	return num % rhs;
 }
 
 int Counter::operator%(const Counter & rhs)

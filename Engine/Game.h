@@ -51,7 +51,9 @@ private:
 	std::uniform_int_distribution<int> cDist;
 	Text text;
 	Text name;
+	Counter numM;
 	Counter numL;
+	Counter numR;
 	float time = 0;
 	float x = 350;
 	float y = 250;
