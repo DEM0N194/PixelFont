@@ -47,7 +47,6 @@ private:
 	/********************************/
 	/*        User Variables        */
 	/********************************/
-	std::random_device rd;
 	std::mt19937 rng;
 	std::uniform_int_distribution<int> cDist;
 	Text text;

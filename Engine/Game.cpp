@@ -20,25 +20,23 @@
  ******************************************************************************************/
 #include "MainWindow.h"
 #include "Game.h"
-#include <string>
 #include <cmath>
 
 Game::Game(MainWindow& wnd)
 	:
 	wnd(wnd),
 	gfx(wnd),
+	/*------user------*/
 	name(gfx),
 	text(gfx),
-	rng(rd()),
+	rng(std::random_device()()),
 	cDist(0, 255)
 {
 	name.SetText("Adam");
-	name.SetColor(255,154,124);
 	name.SetSpacing(2);
-	name.SetPostion(400, 300);
 
 	text.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.,?!\n0123456789");
-	text.SetColor(255, 200, 100);
+	text.SetLineSpacing(10);
 	text.SetBoxSize(100, 50, 700, 600);
 
 	numL.SetPostion(150, 500);
