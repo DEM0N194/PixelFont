@@ -31,6 +31,7 @@ private:
 	Position box1;
 	Position box2;
 	std::string text;
+	int column;
 	int spacing;
 	int lineSpacing;
 };
