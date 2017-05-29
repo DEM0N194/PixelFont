@@ -27,15 +27,13 @@ Game::Game(MainWindow& wnd)
 	wnd(wnd),
 	gfx(wnd),
 	/*------user------*/
-	name(gfx),
-	text(gfx),
 	rng(std::random_device()()),
 	cDist(0, 255)
 {
 	name.SetText("Adam");
 	name.SetSpacing(2);
 
-	text.SetText("KEVIN egy buzerant.de amugy nem csak\nhosszu mondatot\nakar irni -'.,?!\n0123456789");
+	text.SetText("KEVIN egy buzerant. de amugy nem csak\nhosszu mondatot\nakar irni -'.,?!\n0123456789");
 	text.SetLineSpacing(10);
 	text.SetBoxSize(100, 50, 700, 600);
 
@@ -87,8 +85,8 @@ void Game::UpdateModel()
 
 void Game::ComposeFrame()
 {
-	text.Draw();
-	name.Draw();
+	text.Draw(gfx);
+	name.Draw(gfx);
 	numL.Draw(gfx);
 	numM.Draw(gfx);
 	numR.Draw(gfx);
