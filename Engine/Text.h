@@ -11,8 +11,15 @@ private:
 		int x;
 		int y;
 	};
+private:
+	enum Alignment
+	{
+		Left,
+		Middle,
+		Right
+	};
 public:
-	Text(Graphics& in_gfx);
+	Text();
 	void Reset();
 	void SetPostion(int in_x, int in_y);
 	void SetColor(Color in_c);
@@ -21,15 +28,19 @@ public:
 	void SetSpacing(int in_spacing);
 	void SetLineSpacing(int in_lineSpacing);
 	void SetText(std::string in_text);
-	void Draw();
+	void AlignLeft();
+	void AlignMiddle();
+	void AlignRight();
+	void Draw(Graphics& gfx);
 private:
-	void DrawCh(char ch);
+	void DrawCh(char ch, Graphics& gfx);
+	int GetLength(std::string s);
 private:
-	Graphics& gfx;
 	Color c;
 	Position pos;
 	Position box1;
 	Position box2;
+	Alignment alignment;
 	std::string text;
 	int column;
 	int spacing;
